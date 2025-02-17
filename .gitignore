@@ -6,3 +6,7 @@ riderModule.iml
 .idea/
 
 tailwindcss
+
+node_modules/
+
+package-lock.json

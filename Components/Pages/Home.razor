@@ -1,5 +1,16 @@
 ﻿@page "/"
+@page "/home"
 
-<h1>Hello, world!</h1>
+@inject NavigationManager navigationManager
 
-Welcome to your new app.
+<div class="object-cover w-full h-20vh max-h-80">
+    <img class="w-full h-full" src="images/chiikawa_background.png" alt="main-layout"/>
+</div>
+
+@code
+{
+    protected override async Task OnInitializedAsync()
+    {
+        navigationManager.NavigateTo("/home");
+    }
+}
