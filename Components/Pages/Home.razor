@@ -1,16 +1,23 @@
 ﻿@page "/"
 @page "/home"
+@using expense_marker_blazor.Components.Components.Home
 
 @inject NavigationManager navigationManager
 
-<div class="object-cover w-full h-20vh max-h-80">
+<div class="object-cover w-full h-20vh max-h-80 relative">
     <img class="w-full h-full" src="images/chiikawa_background.png" alt="main-layout"/>
+    <h2 class="absolute bottom-0 left-0 h-10 w-full">Lolly and Felix Home</h2>
 </div>
+@foreach (var item in Enumerable.Range(0, 10))
+{
+    <ExpenseItem />
+}
 
 @code
 {
-    protected override async Task OnInitializedAsync()
+    protected override void OnInitialized()
     {
+        base.OnInitialized();
         navigationManager.NavigateTo("/home");
     }
 }
