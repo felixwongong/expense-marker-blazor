@@ -4,13 +4,13 @@
 
 @inject NavigationManager navigationManager
 
-<div class="object-cover w-full h-20vh max-h-80 relative">
+<div class="object-cover w-full h-20vh max-h-80 relative top-0 left-0 z-10">
     <img class="w-full h-full" src="images/chiikawa_background.png" alt="main-layout"/>
     <h2 class="absolute bottom-0 left-0 h-10 w-full">Lolly and Felix Home</h2>
 </div>
 @foreach (var item in Enumerable.Range(0, 10))
 {
-    <ExpenseItem />
+    <ExpenseItem category="Cate" description="Hello world" amount="@Convert.ToDecimal(item)" />
 }
 
 @code

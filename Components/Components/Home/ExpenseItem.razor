@@ -1,13 +1,22 @@
-<div class="flex flex-row justify-between border-1 border-gray-200 p-4">
-    <div class="justify-items-start flex flex-row">
-        <h2 class="w-1/5 font-bold">Category</h2>
-        <p class="">Transport feess</p>
+@using System.Globalization
+
+<div class="flex flex-row justify-stretch items-stretch border-1 border-gray-200 px-2 min-h-16">
+    <div class="grow-1 flex items-center">
+        <p class="my-auto">@category</p>
     </div>
-    <div class="w-1/5">
-        <h2>Total: $1000</h2>
+    <div class="grow-4 flex items-center">
+        <p class="my-auto">@description</p>
+    </div>
+    <div class="grow-1 flex items-center">
+        <p class="my-auto">$@amount.ToString(CultureInfo.CurrentUICulture)</p>
     </div>
 </div>
 
 @code {
-    
+    [Parameter]
+    public string category { get; set; } = string.Empty;
+    [Parameter]
+    public string description { get; set; } = string.Empty;
+    [Parameter]
+    public decimal amount { get; set; } = 0m;
 }
