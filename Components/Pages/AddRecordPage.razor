@@ -1,9 +1,29 @@
 @page "/add-record"
 @using expense_marker_blazor.Components.Components.AddRecordPage
+@using expense_marker_blazor.Dto
 
 <form class="flex flex-col justify-stretch items-stretch w-full bg-amber-100">
+    <NamedField fieldName="Date">
+        <input type="date" name="Date" value="@record.date.ToString("yyyy-MM-dd")"/>
+    </NamedField>
+    <NamedField fieldName="Amount">
+        <input type="number" name="Amount" placeholder="$"/>
+    </NamedField>
+    <NamedField fieldName="Category">
+        <input type="text" name="Category" value="@record.category"/>
+    </NamedField>
+    <NamedField fieldName="Description">
+        <input type="text" name="Description" placeholder="Description" value="@record.description" />
+    </NamedField>
 </form>
 
 @code {
-    
+    public ExpenseRecord record { get; set; } = new ExpenseRecord()
+    {
+        id = 1,
+        date = DateTime.Now,
+        amount = 0,
+        category = "Shopping",
+        description = string.Empty 
+    };
 }

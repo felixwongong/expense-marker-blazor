@@ -1,0 +1,12 @@
+<div class="flex flex-row justify-content-between items-center w-full">
+    <p class="my-auto">@fieldName</p>
+    @ChildContent
+</div>
+
+@code {
+    [Parameter] 
+    public string fieldName { get; set; } = string.Empty;
+    
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+}
