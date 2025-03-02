@@ -839,6 +839,9 @@
   .h-25 {
     height: calc(var(--spacing) * 25);
   }
+  .h-75 {
+    height: calc(var(--spacing) * 75);
+  }
   .h-100 {
     height: calc(var(--spacing) * 100);
   }
@@ -847,9 +850,6 @@
   }
   .h-50 {
     height: calc(var(--spacing) * 50);
-  }
-  .h-75 {
-    height: calc(var(--spacing) * 75);
   }
   .h-auto {
     height: auto;
@@ -862,12 +862,6 @@
   }
   .min-h-16 {
     min-height: calc(var(--spacing) * 16);
-  }
-  .min-h-20 {
-    min-height: calc(var(--spacing) * 20);
-  }
-  .min-h-40 {
-    min-height: calc(var(--spacing) * 40);
   }
   .w-8 {
     width: calc(var(--spacing) * 8);
@@ -968,9 +962,6 @@
   .justify-stretch {
     justify-content: stretch;
   }
-  .justify-items-stretch {
-    justify-items: stretch;
-  }
   .gap-0 {
     gap: calc(var(--spacing) * 0);
   }
@@ -1047,23 +1038,17 @@
   .border-white {
     border-color: var(--color-white);
   }
-  .bg-amber-200 {
-    background-color: var(--color-amber-200);
+  .bg-amber-100 {
+    background-color: var(--color-amber-100);
   }
   .bg-black {
     background-color: var(--color-black);
-  }
-  .bg-blue-200 {
-    background-color: var(--color-blue-200);
   }
   .bg-blue-600 {
     background-color: var(--color-blue-600);
   }
   .bg-gray-300 {
     background-color: var(--color-gray-300);
-  }
-  .bg-green-200 {
-    background-color: var(--color-green-200);
   }
   .bg-transparent {
     background-color: transparent;
