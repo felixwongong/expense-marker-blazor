@@ -2,28 +2,42 @@
 @using expense_marker_blazor.Components.Components.AddRecordPage
 @using expense_marker_blazor.Dto
 
-<form class="flex flex-col justify-stretch items-stretch w-full bg-amber-100">
-    <NamedField fieldName="Date">
-        <input type="date" name="Date" value="@record.date.ToString("yyyy-MM-dd")"/>
+<form class="flex flex-col justify-stretch items-start w-full space-y-10 py-8 px-4">
+    <NamedField fieldName="Date" styleClass="h-16">
+        <input class="text-end" type="number" name="Amount" placeholder="$"/>
     </NamedField>
-    <NamedField fieldName="Amount">
-        <input type="number" name="Amount" placeholder="$"/>
-    </NamedField>
-    <NamedField fieldName="Category">
-        <input type="text" name="Category" value="@record.category"/>
-    </NamedField>
-    <NamedField fieldName="Description">
-        <input type="text" name="Description" placeholder="Description" value="@record.description" />
-    </NamedField>
+    <div class="flex flex-col justify-stretch items-stretch w-full space-y-5">
+        <NamedField fieldName="Amount" styleClass="h-6">
+            <input @ref="inputs[0]" class="text-end" type="date" name="Date"
+                   value="@record.date.ToString("yyyy-MM-dd")"/>
+        </NamedField>
+        <NamedField fieldName="Category" styleClass="h-6">
+            <input @ref="inputs[2]" class="text-end" type="text" name="Category" value="@record.category"/>
+        </NamedField>
+        <NamedField fieldName="Description" styleClass="h-6">
+            <input @ref="inputs[3]" class="text-end" type="text" name="Description" placeholder="Description"
+                   value="@record.description"/>
+        </NamedField>
+    </div>
 </form>
 
 @code {
+    private ElementReference[] inputs = new ElementReference[4];
+
     public ExpenseRecord record { get; set; } = new ExpenseRecord()
     {
         id = 1,
         date = DateTime.Now,
         amount = 0,
         category = "Shopping",
-        description = string.Empty 
+        description = string.Empty
     };
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+        }
+    }
+
 }
