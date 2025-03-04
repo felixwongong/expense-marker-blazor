@@ -4,25 +4,36 @@
 
 <form class="flex flex-col justify-stretch items-start w-full space-y-10 py-8 px-4">
     <NamedField fieldName="Date" styleClass="h-16">
-        <input class="text-end" type="number" name="Amount" placeholder="$"/>
+        <input @onkeydown="DisplayNext" type="date" name="date" value="@record.date.ToString("yyyy-MM-dd")"/>
     </NamedField>
     <div class="flex flex-col justify-stretch items-stretch w-full space-y-5">
         <NamedField fieldName="Amount" styleClass="h-6">
-            <input @ref="inputs[0]" class="text-end" type="date" name="Date"
-                   value="@record.date.ToString("yyyy-MM-dd")"/>
+            <input @ref="inputRefs[0]" @onkeydown="OnInput" type="number" name="amount" placeholder="$"/>
         </NamedField>
         <NamedField fieldName="Category" styleClass="h-6">
-            <input @ref="inputs[2]" class="text-end" type="text" name="Category" value="@record.category"/>
+            <select @ref="inputRefs[1]" @onselect="OnSelect" name="category" value="@record.category">
+                <option value="Shopping">Shopping</option>
+                <option value="Food">Food</option>
+                <option value="Transportation">Transportation</option>
+                <option value="Entertainment">Entertainment</option>
+                <option value="Health">Health</option>
+                <option value="Other">Other</option>
+            </select>
         </NamedField>
         <NamedField fieldName="Description" styleClass="h-6">
-            <input @ref="inputs[3]" class="text-end" type="text" name="Description" placeholder="Description"
-                   value="@record.description"/>
+            <input @ref="inputRefs[2]" @onkeydown="OnInput" type="text" name="description" placeholder="Description" value="@record.description"/>
         </NamedField>
     </div>
 </form>
 
+<style>
+    input {
+        text-align: end;
+    }
+</style>
+
 @code {
-    private ElementReference[] inputs = new ElementReference[4];
+    private ElementReference[] inputRefs = new ElementReference[3];
 
     public ExpenseRecord record { get; set; } = new ExpenseRecord()
     {
@@ -37,7 +48,26 @@
     {
         if (firstRender)
         {
+            await DisplayNext();
         }
     }
 
+    private int currentInputIndex;
+    private async Task DisplayNext()
+    {
+        await inputRefs[currentInputIndex++ % inputRefs.Length].FocusAsync();
+    }
+
+    private void OnInput(KeyboardEventArgs args)
+    {
+        if (args.Key == "Enter")
+        {
+            DisplayNext().ContinueWith((_) => { });
+        }
+    }
+
+    private void OnSelect(EventArgs args)
+    {
+        DisplayNext().ContinueWith((_) => { });
+    }
 }
